@@ -69,8 +69,8 @@ int bookRoom(int rooms[]) {
 }
 
 int main() {
-    int rooms[TOTAL_ROOMS] = {0};    // 0 = Available, 1 = Booked
-    int tables[TOTAL_TABLES] = {0};  // 0 = Available, 1 = Booked
+    int rooms[TOTAL_ROOMS] = {0};    // 0 = available, 1 = booked (both room and table)
+    int tables[TOTAL_TABLES] = {0};  
     int userChoice;
 
     printf("\" Welcome to the Smart Workspace Booking System \" \n");
