@@ -106,7 +106,7 @@ int main() {
                 }
                 break;
             case 5:
-                printf("\nThank you for using our system. Goodbye and have a productive day! 👋\n");
+                printf("\nThank you for using our system. have a productive day! \n");
                 return 0;
             default:
                 printf("Invalid input. Please select a number from 1 to 5.\n");
