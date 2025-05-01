@@ -1,15 +1,15 @@
 #include <stdio.h>
 
-#define TOTAL_TABLES 5
-#define TOTAL_ROOMS 4
-#define WEEKLY_DISCOUNT 0.90
-#define MONTHLY_DISCOUNT 0.80
-#define STUDENT_DISCOUNT 0.75
+//#define 5 5
+//#define 4 4
+//#define 0.9 0.90
+//#define 0.80 0.80
+//#define 0.75 0.75
 
 // Showing available tables
 void showTables(int tables[]) {
     printf("\n=== Available Tables ===\n");
-    for (int i = 0; i < TOTAL_TABLES; i++) {
+    for (int i = 0; i < 5; i++) {
         printf("Table %d: %s\n", i + 1, tables[i] == 0 ? "Available" : "Booked");
     }
 }
@@ -19,10 +19,10 @@ int bookTable(int tables[]) {
     int tableChoice;
     showTables(tables);
 
-    printf("\nPlease enter the number of the table you want to book (1 to %d): ", TOTAL_TABLES);
+    printf("\nPlease enter the number of the table you want to book (1 to %d): ", 5);
     scanf("%d", &tableChoice);
 
-    if (tableChoice < 1 || tableChoice > TOTAL_TABLES) {
+    if (tableChoice < 1 || tableChoice > 5) {
         printf("Sorry! That table number is out of range.\n");
         return 0;
     }
@@ -40,7 +40,7 @@ int bookTable(int tables[]) {
 // Showing available rooms
 void showRooms(int rooms[]) {
     printf("\n=== Available Rooms ===\n");
-    for (int i = 0; i < TOTAL_ROOMS; i++) {
+    for (int i = 0; i < 4; i++) {
         printf("Room %d: %s\n", i + 1, rooms[i] == 0 ? "Available" : "Booked");
     }
 }
@@ -50,10 +50,10 @@ int bookRoom(int rooms[]) {
     int roomChoice;
     showRooms(rooms);
 
-    printf("\nPlease enter the number of the room you want to book (1 to %d): ", TOTAL_ROOMS);
+    printf("\nPlease enter the number of the room you want to book (1 to %d): ", 4);
     scanf("%d", &roomChoice);
 
-    if (roomChoice < 1 || roomChoice > TOTAL_ROOMS) {
+    if (roomChoice < 1 || roomChoice > 4) {
         printf("Oops! That room number is out of range.\n");
         return 0;
     }
@@ -73,9 +73,9 @@ void displaySubPlans() {
     printf("\n=== Workspace Subscription Plans ===\n");
     printf("1. 1 Hour - $1\n");
     printf("2. Whole Day - $5\n");
-    printf("3. Weekly Plan - $25 (10%% off)\n");
-    printf("4. Monthly Plan - $80 (20%% off)\n");
-    printf("5. Student Pass (Monthly) - $60 (25%% off with ID)\n");
+    printf("3. Weekly Plan - $35 (10%% off)\n");
+    printf("4. Monthly Plan - $140 (20%% off)\n");
+    printf("5. Student Pass (Monthly) - $140 (25%% off with ID)\n");
     printf("\nChoose a plan (1-5): ");
 }
 
@@ -85,9 +85,9 @@ float calculateSubCost(int choice) {
     switch (choice) {
         case 1: cost = 1.0; break;
         case 2: cost = 5.0; break;
-        case 3: cost = 25.0 * WEEKLY_DISCOUNT; break;
-        case 4: cost = 80.0 * MONTHLY_DISCOUNT; break;
-        case 5: cost = 60.0 * STUDENT_DISCOUNT; break;
+        case 3: cost = 35.0 * 0.90; break;
+        case 4: cost = 140.0 * 0.80; break;
+        case 5: cost = 140.0 * 0.75; break;
         default: printf("Invalid choice!\n"); return -1.0;
     }
     return cost;
@@ -213,7 +213,7 @@ int optionalMenuDisplay() {
     return optionalchoice;
 }
 
-//  snack and drink ordering
+// Handle snack or drink ordering
 float orderSnackMenu() {
     float totalCost = 0.0;
     int choice = optionalMenuDisplay();
@@ -230,11 +230,11 @@ float orderSnackMenu() {
 }
 
 int main() {
-    int rooms[TOTAL_ROOMS] = {0};    // 0 = available, 1 = booked
-    int tables[TOTAL_TABLES] = {0};
+    int rooms[4] = {0};    // 0 = available, 1 = booked
+    int tables[5] = {0};
     int userChoice;
-    float totalCost = 0.0;           // track total cost
-    int hasBooked = 0;               // track the booking process 
+    float totalCost = 0.0;           // Track total cost
+    int hasBooked = 0;               // Track if any booking was made
 
     printf("\" Welcome to the Smart Workspace Booking System \" \n");
 
@@ -307,7 +307,7 @@ int main() {
             case 4: {
                 if (bookTable(tables)) {
                     hasBooked = 1;
-                    // asking to order snacks or drinks after booking
+                    // Prompt for snacks/drinks immediately after booking
                     char order;
                     printf("\nWould you like to order a snack or drink? (y/n): ");
                     scanf(" %c", &order);
@@ -359,10 +359,10 @@ int main() {
                 printf("\n=== Booking Details & Receipt ===\n");
                 if (hasBooked) {
                     printf("Bookings:\n");
-                    for (int i = 0; i < TOTAL_TABLES; i++) {
+                    for (int i = 0; i < 5; i++) {
                         if (tables[i]) printf("=> Table %d\n", i + 1);
                     }
-                    for (int i = 0; i < TOTAL_ROOMS; i++) {
+                    for (int i = 0; i < 4; i++) {
                         if (rooms[i]) printf("=> Room %d\n", i + 1);
                     }
                 } else {
