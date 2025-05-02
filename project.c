@@ -4,7 +4,7 @@
 //#define 4 4
 //#define 0.9 0.90
 //#define 0.80 0.80
-//#define 0.75 0.75
+
 
 // Showing available tables
 void showTables(int tables[]) {
@@ -75,7 +75,6 @@ void displaySubPlans() {
     printf("2. Whole Day - $5\n");
     printf("3. Weekly Plan - $35 (10%% off)\n");
     printf("4. Monthly Plan - $140 (20%% off)\n");
-    printf("5. Student Pass (Monthly) - $140 (25%% off with ID)\n");
     printf("\nChoose a plan (1-5): ");
 }
 
@@ -87,7 +86,6 @@ float calculateSubCost(int choice) {
         case 2: cost = 5.0; break;
         case 3: cost = 35.0 * 0.90; break;
         case 4: cost = 140.0 * 0.80; break;
-        case 5: cost = 140.0 * 0.75; break;
         default: printf("Invalid choice!\n"); return -1.0;
     }
     return cost;
@@ -268,7 +266,6 @@ int main() {
                         case 2: printf("Whole Day - $5\n"); break;
                         case 3: printf("Weekly Plan - $25 (10%% off)\n"); break;
                         case 4: printf("Monthly Plan - $80 (20%% off)\n"); break;
-                        case 5: printf("Student Pass (Monthly) - $60 (25%% off with ID)\n"); break;
                         default: printf("Invalid plan selection.\n");
                     }
                     printf("Cost: $%.2f\n", subCost);
